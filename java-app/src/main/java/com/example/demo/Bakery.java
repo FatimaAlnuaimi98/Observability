@@ -4,7 +4,6 @@ public class Bakery {
     private double price;
     private String name;
 
-    // Default constructor needed for JSON deserialization
     public Bakery() {
     }
 
@@ -29,7 +28,7 @@ public class Bakery {
     }
 
     public String toString() {
-        return "Added bakery {" +
+        return "Added Pastry {" +
                 "name='" + name + '\'' +
                 ", price=" + price +
                 '}';

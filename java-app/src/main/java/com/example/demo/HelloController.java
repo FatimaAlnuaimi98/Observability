@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.LongCounter;
+import io.opentelemetry.api.metrics.Meter;
+import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
 
 
 @RestController
@@ -14,6 +21,16 @@ public class HelloController {
 
      // In-memory list to store bakeries
     private final List<Bakery> bakeryList = new ArrayList<>();
+     private static final Tracer tracer = GlobalOpenTelemetry.getTracer("bakery-service");
+    private static final Meter meter = GlobalOpenTelemetry.getMeter("bakery-service");
+    private final LongCounter breadCounter;
+    
+    public HelloController() {
+    breadCounter = meter.counterBuilder("bread.added")
+        .setDescription("Number of breads added")
+        .setUnit("breads")
+        .build();
+}
 
     @GetMapping("/")
     public String hello() {
@@ -28,11 +45,12 @@ public class HelloController {
 
     @PostMapping("/add_bread")
     public String createGreeting(@RequestBody Bakery bakery) {
+         Span span = Span.current();
+        span.setAttribute("bread.name", bakery.getName());
+        span.setAttribute("bread.price", bakery.getPrice());
+        breadCounter.add(1);
         bakeryList.add(bakery);
-        // You could add business logic here like saving to a database
         return bakery.toString();
     }
 
-
-    
 }
