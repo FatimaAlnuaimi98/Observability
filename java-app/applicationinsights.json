@@ -1,7 +1,7 @@
 {
   "connectionString": "InstrumentationKey=966c9ffc-8f39-4076-95e9-91cd31dbef64;IngestionEndpoint=https://uaenorth-0.in.applicationinsights.azure.com/;LiveEndpoint=https://uaenorth.livediagnostics.monitor.azure.com/;ApplicationId=9c02282e-bc35-4ef6-9c58-32f9820c503e",
   "role": {
-    "name": "bakery-service"
+    "name": "user-service"
   },
   "sampling": {
     "percentage": 100

@@ -1,6 +1,6 @@
-# Java Bakery Application
+# Java User Management Application
 
-A simple java spring boot application, built for the purpose of testing out diffrenet azure monitoring services.
+A simple java spring boot application, built for the purpose of testing out different azure monitoring services.
 
 ## Application Insights Using Java agent
 
@@ -18,17 +18,14 @@ Application Insight connection string is copied from the resource in Azure porta
 
 ```bash
 # Build the Docker image
-docker build -t bakery-app .
+docker build -t user-app .
 
 # Run the container
-docker run -e APPLICATIONINSIGHTS_CONNECTION_STRING="" -p 6060:6060 bakery-app
+docker run -e APPLICATIONINSIGHTS_CONNECTION_STRING="" -p 6060:6060 user-app
 ```
 
 ## API Endpoints
 
 - `GET /` - Welcome message
-- `GET /bakery` - List all bakery items
-- `POST /add_bread` - Add a new bakery item
-
-
-
+- `GET /users` - List all users
+- `POST /add_user` - Add a new user
