@@ -14,7 +14,7 @@ import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.api.GlobalOpenTelemetry;
 
-
+//javaappacr.azurecr.io
 
 @RestController
 public class Controller {
