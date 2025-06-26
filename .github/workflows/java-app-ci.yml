@@ -8,7 +8,7 @@ on:
 
 env: 
   IMAGE_TAG: ${{ github.sha }}
-  IMAGE_NAME: javaappacr
+  IMAGE_NAME: java-app
 jobs:
   build:
     runs-on: ubuntu-latest
