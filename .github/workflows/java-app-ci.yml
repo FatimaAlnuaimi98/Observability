@@ -31,8 +31,11 @@ jobs:
 
     - name: login to ACR
       run: az acr login --name ${{ secrets.ACR_NAME }}
-
-    - name: Build and Push Docker Image to ACR
+    
+    - name: Build and Push Docker Image with ACR Build
       run: |
-        docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}} java-app
-        docker push ${{ secrets.ACR_NAME }}.azurecr.io/${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}} 
+        az acr build \
+          --registry ${{ secrets.ACR_NAME }} \
+          --image ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} \
+          --image ${{ env.IMAGE_NAME }}:latest \
+          java-app
