@@ -38,4 +38,5 @@ jobs:
           --registry ${{ secrets.ACR_NAME }} \
           --image ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} \
           --image ${{ env.IMAGE_NAME }}:latest \
+          --auth-mode access-token \
           java-app
