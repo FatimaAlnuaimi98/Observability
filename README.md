@@ -85,7 +85,10 @@ The repository includes GitHub Actions workflows for CI/CD deployment to Azure. 
    - `AZURE_CREDENTIALS`: Azure service principal credentials
    - `ACR_NAME`: Azure Container Registry name
    - `RESOURCE_GROUP`: Azure resource group name
-   - `WEB_APP_NAME`: Azure Web App name
+   - `CONTAINER_APP_NAME`: Azure Container App name
+   - `APPLICATIONINSIGHTS_CONNECTION_STRING`: Azure Application Insights connection string
+
+
 
 2. Push to the main branch to trigger the workflow.
 
